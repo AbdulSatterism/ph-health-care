@@ -3,6 +3,7 @@ import express, { Application, Request, Response } from 'express';
 import { userRoutes } from './app/modules/user/user.route';
 
 
+
 const app: Application = express();
 
 //body parser
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-app.use('/api/v1/users', userRoutes); 
+app.use('/api/v1/user', userRoutes); 
 
 
 
