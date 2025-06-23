@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
 import { userRoutes } from './app/modules/user/user.route';
+import { adminRoutes } from './app/modules/admin/admin.route';
 
 
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api/v1/user', userRoutes); 
+app.use('/api/v1/admin', adminRoutes); 
 
 
 
