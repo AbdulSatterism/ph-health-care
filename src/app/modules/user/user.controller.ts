@@ -22,6 +22,7 @@ const createAdmin:RequestHandler = async (req:Request, res:Response, ) => {
 }
 }
 
+
 export const userController = {
     createAdmin,
 };
