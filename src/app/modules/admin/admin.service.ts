@@ -6,13 +6,22 @@ const prisma = new PrismaClient();
 
 
 const getAllAdmins = async (search?: string) => {
+  // const whereClause:Prisma.AdminWhereInput | undefined = search
+  //   ? {
+  //       OR: [
+  //         { email: { contains: search, mode: "insensitive" } },
+  //         { name: { contains: search, mode: "insensitive" } },
+  //       ],
+  //     }
+  //   : {};
+
+  //* optimized where clause
   const whereClause:Prisma.AdminWhereInput | undefined = search
     ? {
-        OR: [
-          { email: { contains: search, mode: "insensitive" } },
-          { name: { contains: search, mode: "insensitive" } },
-        ],
-      }
+        OR: ['name', 'email'].map((field) => ({
+          [field]: {  contains: search, mode: "insensitive" }
+    }))
+    }
     : {};
 
   const admins = await prisma.admin.findMany({
